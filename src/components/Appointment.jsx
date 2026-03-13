@@ -2,14 +2,10 @@ import { useState } from "react";
 import "../styles/sections.css";
 
 const TIME_SLOTS = [
-  { time: "9:00 AM",  available: true },
-  { time: "10:00 AM", available: true },
-  { time: "11:00 AM", available: true },
-  { time: "2:00 PM",  available: true },
-  { time: "3:00 PM",  available: true },
-  { time: "4:00 PM",  available: true },
-  { time: "Sunday",   available: false, label: "Closed" },
-];
+  { time: "Morning Slot", available: true, label: "10:00 AM - 2:00 PM" },
+  { time: "Evening Slot", available: true, label: "5:00 PM - 9:00 PM" },
+  { time: "Sunday", available: false, label: "Closed" },
+]
 
 const SERVICES = [
   "Dental Consultation",
@@ -22,7 +18,7 @@ const SERVICES = [
 ];
 
 export default function Appointment() {
-  const [activeSlot, setActiveSlot] = useState("10:00 AM");
+  // const [activeSlot, setActiveSlot] = useState("10:00 AM");
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "", phone: "", email: "",
@@ -36,8 +32,35 @@ export default function Appointment() {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
+    const message = `
+     *Appointment Details*:
+     - Name: ${form.name}
+     - Phone: ${form.phone}
+     - Email: ${form.email}
+     - Preferred Date: ${form.date}
+     - Service Required: ${form.service}
+     - Additional Notes: ${form.message}
+    `;
+
+    const url = `https://wa.me/9820587353?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
     setForm({ name: "", phone: "", email: "", date: "", service: "", message: "" });
   };
+
+  // const handleWhatsAppClick = () => {
+  //   const message = `
+  //    *Appointment Details*:
+  //    - Name: ${form.name}
+  //    - Phone: ${form.phone}
+  //    - Email: ${form.email}
+  //    - Preferred Date: ${form.date}
+  //    - Service Required: ${form.service}
+  //    - Additional Notes: ${form.message}
+  //   `;
+
+  //   const url = `https://wa.me/8591384199?text=${encodeURIComponent(message)}`;
+  //   window.open(url, "_blank");
+  // }
 
   return (
     <section className="appointment-section" id="appointment">
@@ -69,7 +92,7 @@ export default function Appointment() {
               <div className="form-group">
                 <label>Phone Number</label>
                 <input
-                  name="phone" placeholder="+92 300 0000000"
+                  name="phone" placeholder="+91 12345 67890"
                   value={form.phone} onChange={handleChange} required
                 />
               </div>
@@ -113,10 +136,19 @@ export default function Appointment() {
               </div>
             </div>
 
-            <button type="submit" className="form-submit">
-              Confirm My Appointment →
+            <button type="submit" className="form-submit success">
+              Book via Whatsapp →
             </button>
           </form>
+
+          {/* {
+            submitted && (
+              <button
+                onClick={handleWhatsAppClick}
+                className="btn-success mt-4"
+              >Book via Whatsapp →</button>
+            )
+          } */}
         </div>
 
         {/* ── Info Panel ── */}
@@ -132,15 +164,9 @@ export default function Appointment() {
           <div className="slots">
             {TIME_SLOTS.map(({ time, available, label }) =>
               available ? (
-                <button
-                  key={time}
-                  className={`slot${activeSlot === time ? " active" : ""}`}
-                  onClick={() => setActiveSlot(time)}
-                >
-                  {time}
-                </button>
+                <span key={time} className="slot">{time} - {label}</span>
               ) : (
-                <span key={time} className="slot closed">{label || time}</span>
+                <span key={time} className="slot closed">{time} - {label || time}</span>
               )
             )}
           </div>
@@ -148,16 +174,16 @@ export default function Appointment() {
           <div className="consult-fee-card">
             <div className="fee-info">
               <span>Consultation Fee</span>
-              <strong>₨ 1,200</strong>
+              <strong>₨ 300 /-</strong>
             </div>
-            <button
+            {/* <button
               className="btn-primary"
               onClick={() =>
                 document.querySelector(".appointment-form-card").scrollIntoView({ behavior: "smooth" })
               }
             >
-              Book Now
-            </button>
+              Call Now
+            </button> */}
           </div>
         </div>
 
