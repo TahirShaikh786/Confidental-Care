@@ -27,9 +27,9 @@ const FOOTER_COLS = [
     title: "Contact",
     items: [
       "📍 Confidental Care, 10, Sai Dwar Building, Shirdi Nagar, Navghar Phatak Road, Bhayandar East, Thane.",
-      "📞 +92 300 1234567",
-      "✉️ info@confidentalcare.pk",
-      "🕐 Mon–Sat: 9am – 6pm",
+      "📞 +91 98205 87353",
+      "✉️ info@confidentalcare.in",
+      "🕐 Mon–Sat: 10am - 2pm : 5pm - 9pm",
       "🔴 Sunday: Closed",
     ],
   },
