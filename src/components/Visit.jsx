@@ -9,17 +9,17 @@ const CONTACT_INFO = [
   {
     icon: "📞",
     title: "Phone",
-    text: "+92 300 1234567\n+92 21 1234567",
+    text: "+91 98205 87353",
   },
   {
     icon: "✉️",
     title: "Email",
-    text: "info@confidentalcare.pk\nappointments@confidentalcare.pk",
+    text: "info@confidentalcare.in",
   },
   {
     icon: "🕐",
     title: "Clinic Hours",
-    text: "Monday – Saturday: 9:00 AM – 6:00 PM\nSunday: Closed",
+    text: "Monday – Saturday: 10:00 AM to 2:00 PM : 5:00 PM to 9:00 PM\nSunday: Closed",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function Visit() {
           <span className="section-tag">Find Us</span>
           <h2 className="section-title">Visit Our Clinic</h2>
           <p className="section-sub">
-            Conveniently located in the heart of Karachi — accessible, welcoming,
+            Conveniently located in the heart of Mumbai — accessible, welcoming,
             and ready to serve you.
           </p>
 
