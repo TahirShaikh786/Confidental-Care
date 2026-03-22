@@ -62,7 +62,7 @@ export default function Visit() {
         <div className="map-box">
           🗺️
           <div className="map-label">
-            📍 Confidental Care — Karachi
+            📍 Confidental Care — Mumbai
           </div>
         </div>
 
